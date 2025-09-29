@@ -18,6 +18,7 @@
     <name>spring-boot-microservice</name>
     <modules>
         <module>discovery-service</module>
+        <module>api-gateway-service</module>
     </modules>
 
     <properties>
