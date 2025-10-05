@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongodb/mongodb-community-server
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  config-server:
+    build:
+      context: ./config-server   # adjust path if needed
+    container_name: config-server
+    depends_on:
+      - mongo
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/configdb
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8888:8888"
+    restart: always
+
+volumes:
+  mongo_data:

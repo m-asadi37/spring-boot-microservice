@@ -1,0 +1,9 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/configdb}
