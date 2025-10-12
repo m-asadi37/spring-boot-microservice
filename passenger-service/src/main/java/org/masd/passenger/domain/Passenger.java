@@ -29,11 +29,11 @@ public class Passenger extends BaseData {
     @Column
     private String family;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "wallet_id", unique = true)
-    private Wallet wallet;
+    private Long walletId;
 
+    /*
+    TODO: wallet id and requests
     @OneToMany(mappedBy = "passenger", cascade = CascadeType.ALL)
-    private Set<TripRequest> tripRequests = new HashSet<>();
+    private Set<TripRequest> tripRequests = new HashSet<>();*/
 
 }

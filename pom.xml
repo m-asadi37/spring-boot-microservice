@@ -22,6 +22,8 @@
         <module>passenger-service</module>
         <module>config-server</module>
         <module>driver-service</module>
+        <module>wallet-service</module>
+        <module>trip-service</module>
     </modules>
 
     <properties>
