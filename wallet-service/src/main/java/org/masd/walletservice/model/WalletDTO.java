@@ -1,4 +1,4 @@
-package org.masd.passenger.model;
+package org.masd.walletservice.model;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

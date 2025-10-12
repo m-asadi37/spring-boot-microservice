@@ -1,4 +1,4 @@
-package org.masd.passenger.domain;
+package org.masd.walletservice.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,6 +20,5 @@ public class Wallet extends BaseData {
     @Column(nullable = false)
     private Double balance = 0.0;
 
-    @OneToOne(mappedBy = "wallet", fetch = FetchType.LAZY)
-    private Passenger passenger;
+    private Long passengerId;
 }

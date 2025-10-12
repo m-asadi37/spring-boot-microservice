@@ -1,9 +1,9 @@
-package org.masd.passenger.controller;
+package org.masd.walletservice.controller;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
-import org.masd.passenger.model.WalletDTO;
-import org.masd.passenger.service.WalletService;
+import org.masd.walletservice.model.WalletDTO;
+import org.masd.walletservice.service.WalletService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package org.masd.passenger.repos;
+package org.masd.walletservice.repos;
 
-import org.masd.passenger.domain.Wallet;
+import org.masd.walletservice.domain.Wallet;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

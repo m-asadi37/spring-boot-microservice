@@ -1,4 +1,4 @@
-package org.masd.passenger.events;
+package org.masd.walletservice.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

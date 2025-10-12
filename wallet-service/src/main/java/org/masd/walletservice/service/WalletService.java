@@ -1,10 +1,10 @@
-package org.masd.passenger.service;
+package org.masd.walletservice.service;
 
-import org.masd.passenger.domain.Wallet;
-import org.masd.passenger.events.BeforeDeleteWallet;
-import org.masd.passenger.model.WalletDTO;
-import org.masd.passenger.repos.WalletRepository;
-import org.masd.passenger.util.NotFoundException;
+import org.masd.walletservice.domain.Wallet;
+import org.masd.walletservice.events.BeforeDeleteWallet;
+import org.masd.walletservice.model.WalletDTO;
+import org.masd.walletservice.repos.WalletRepository;
+import org.masd.walletservice.util.NotFoundException;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

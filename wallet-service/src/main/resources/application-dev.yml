@@ -1,0 +1,13 @@
+spring:
+
+  config:
+    import: configserver:http://localhost:8888
+
+  cloud:
+    config:
+      profile: dev
+      name: wallet-service
+
+logging:
+  level:
+    org.springframework.cloud.config: debug
