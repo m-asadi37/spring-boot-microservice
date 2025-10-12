@@ -1,4 +1,4 @@
-package org.masd.passenger.domain;
+package org.masd.tripservice.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,8 +24,6 @@ public class TripRequest extends BaseData {
     @Column(nullable = false)
     private Double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "passenger_id")
-    private Passenger passenger;
+    private Long passengerId;
 
 }

@@ -1,9 +1,9 @@
-package org.masd.passenger.controller;
+package org.masd.tripservice.controller;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
-import org.masd.passenger.model.TripRequestDTO;
-import org.masd.passenger.service.TripRequestService;
+import org.masd.tripservice.model.TripRequestDTO;
+import org.masd.tripservice.service.TripRequestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

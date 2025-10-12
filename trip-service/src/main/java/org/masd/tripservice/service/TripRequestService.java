@@ -1,14 +1,9 @@
-package org.masd.passenger.service;
+package org.masd.tripservice.service;
 
-import org.masd.passenger.domain.Passenger;
-import org.masd.passenger.domain.TripRequest;
-import org.masd.passenger.events.BeforeDeletePassenger;
-import org.masd.passenger.model.TripRequestDTO;
-import org.masd.passenger.repos.PassengerRepository;
-import org.masd.passenger.repos.TripRequestRepository;
-import org.masd.passenger.util.NotFoundException;
-import org.masd.passenger.util.ReferencedException;
-import org.springframework.context.event.EventListener;
+import org.masd.tripservice.domain.TripRequest;
+import org.masd.tripservice.model.TripRequestDTO;
+import org.masd.tripservice.repos.TripRequestRepository;
+import org.masd.tripservice.util.NotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +14,9 @@ import java.util.List;
 public class TripRequestService {
 
     private final TripRequestRepository tripRequestRepository;
-    private final PassengerRepository passengerRepository;
 
-    public TripRequestService(final TripRequestRepository tripRequestRepository,
-            final PassengerRepository passengerRepository) {
+    public TripRequestService(final TripRequestRepository tripRequestRepository) {
         this.tripRequestRepository = tripRequestRepository;
-        this.passengerRepository = passengerRepository;
     }
 
     public List<TripRequestDTO> findAll() {
@@ -66,7 +58,7 @@ public class TripRequestService {
         tripRequestDTO.setDestinationLocation(tripRequest.getDestinationLocation());
         tripRequestDTO.setStatus(tripRequest.getStatus());
         tripRequestDTO.setPrice(tripRequest.getPrice());
-        tripRequestDTO.setPassenger(tripRequest.getPassenger() == null ? null : tripRequest.getPassenger().getId());
+        tripRequestDTO.setPassengerId(tripRequest.getPassengerId());
         return tripRequestDTO;
     }
 
@@ -76,21 +68,8 @@ public class TripRequestService {
         tripRequest.setDestinationLocation(tripRequestDTO.getDestinationLocation());
         tripRequest.setStatus(tripRequestDTO.getStatus());
         tripRequest.setPrice(tripRequestDTO.getPrice());
-        final Passenger passenger = tripRequestDTO.getPassenger() == null ? null : passengerRepository.findById(tripRequestDTO.getPassenger())
-                .orElseThrow(() -> new NotFoundException("passenger not found"));
-        tripRequest.setPassenger(passenger);
+        tripRequest.setPassengerId(tripRequestDTO.getPassengerId());
         return tripRequest;
-    }
-
-    @EventListener(BeforeDeletePassenger.class)
-    public void on(final BeforeDeletePassenger event) {
-        final ReferencedException referencedException = new ReferencedException();
-        final TripRequest passengerTripRequest = tripRequestRepository.findFirstByPassengerId(event.getId());
-        if (passengerTripRequest != null) {
-            referencedException.setKey("passenger.tripRequest.passenger.referenced");
-            referencedException.addParam(passengerTripRequest.getId());
-            throw referencedException;
-        }
     }
 
 }

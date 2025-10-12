@@ -1,6 +1,6 @@
-package org.masd.passenger.repos;
+package org.masd.tripservice.repos;
 
-import org.masd.passenger.domain.TripRequest;
+import org.masd.tripservice.domain.TripRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

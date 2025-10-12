@@ -1,4 +1,4 @@
-package org.masd.passenger.domain;
+package org.masd.tripservice.domain;
 
 
 public enum TripRequestStatus {

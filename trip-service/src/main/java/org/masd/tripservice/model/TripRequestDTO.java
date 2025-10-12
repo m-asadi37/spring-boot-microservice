@@ -1,10 +1,10 @@
-package org.masd.passenger.model;
+package org.masd.tripservice.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.masd.passenger.domain.TripRequestStatus;
+import org.masd.tripservice.domain.TripRequestStatus;
 
 
 @Getter
@@ -27,6 +27,6 @@ public class TripRequestDTO {
     @NotNull
     private Double price;
 
-    private Long passenger;
+    private Long passengerId;
 
 }
