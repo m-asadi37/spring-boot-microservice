@@ -3,9 +3,11 @@ package org.masd.driverservice.service;
 import jakarta.persistence.EntityNotFoundException;
 import org.masd.driverservice.domain.Driver;
 import org.masd.driverservice.domain.DriverStatus;
+import org.masd.driverservice.dto.WalletDTO;
 import org.masd.driverservice.model.DriverDto;
 import org.masd.driverservice.repos.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +18,12 @@ public class DriverService {
 
     private final DriverRepository driverRepository;
     //TODO : ned for calling from wallet service
-//    private final WalletRepository walletRepository;
+    private final WalletService walletService;
 
     @Autowired
-    public DriverService(DriverRepository driverRepository/*, WalletRepository walletRepository*/) {
+    public DriverService(DriverRepository driverRepository, WalletService walletService) {
         this.driverRepository = driverRepository;
-//        this.walletRepository = walletRepository;
+        this.walletService = walletService;
     }
 
     @Transactional
@@ -30,10 +32,9 @@ public class DriverService {
             throw new IllegalArgumentException("Driver with this phone already exists");
         });
 
-        //TODO: create wallet
-//        Wallet wallet = new Wallet();
-//        wallet.setBalance(0.0);
-//        walletRepository.save(wallet);
+        WalletDTO walletDTO = new WalletDTO();
+        walletDTO.setBalance(0.0);
+        ResponseEntity<Long> walletResponse = walletService.createWallet(walletDTO);
 
         Driver driver = new Driver();
         driver.setPhone(request.phone());
@@ -41,8 +42,7 @@ public class DriverService {
         driver.setFamily(request.family());
         driver.setLicenseNumber(request.licenseNumber());
         driver.setStatus(DriverStatus.OFFLINE);
-        //TODO: set wallet id
-//        driver.setWalletId(wallet);
+        driver.setWalletId(walletResponse.getBody());
 
         driverRepository.save(driver);
 

@@ -13,12 +13,12 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/api/wallets", produces = MediaType.APPLICATION_JSON_VALUE)
-public class WalletResource {
+@RequestMapping(value = "/api/wallet", produces = MediaType.APPLICATION_JSON_VALUE)
+public class WalletApi {
 
     private final WalletService walletService;
 
-    public WalletResource(final WalletService walletService) {
+    public WalletApi(final WalletService walletService) {
         this.walletService = walletService;
     }
 

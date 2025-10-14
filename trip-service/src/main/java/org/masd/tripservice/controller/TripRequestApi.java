@@ -13,12 +13,12 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/api/tripRequests", produces = MediaType.APPLICATION_JSON_VALUE)
-public class TripRequestResource {
+@RequestMapping(value = "/api/tripRequest", produces = MediaType.APPLICATION_JSON_VALUE)
+public class TripRequestApi {
 
     private final TripRequestService tripRequestService;
 
-    public TripRequestResource(final TripRequestService tripRequestService) {
+    public TripRequestApi(final TripRequestService tripRequestService) {
         this.tripRequestService = tripRequestService;
     }
 
